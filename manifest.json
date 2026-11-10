@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "USTC 学术报告自动选课",
+  "version": "1.2.0",
+  "description": "监控学术报告，自动选课并通过用户自己的邮箱发送成功通知。",
+  "permissions": ["alarms", "storage", "notifications"],
+  "host_permissions": [
+    "https://yjs1.ustc.edu.cn/*",
+    "http://127.0.0.1:17826/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "学术报告监控",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "128": "icon128.png"
+  }
+}

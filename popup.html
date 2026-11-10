@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>学术报告监控</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">USTC · 学术报告</p>
+      <h1>高新校区选课监控</h1>
+    </div>
+    <span id="modeBadge" class="mode-badge">演练模式</span>
+  </header>
+
+  <main>
+    <section class="control-card">
+      <div class="status-line">
+        <span id="statusDot" class="status-dot"></span>
+        <span id="statusText">尚未启动</span>
+      </div>
+      <div class="button-row">
+        <button id="monitorToggle" class="primary">启动监控</button>
+        <button id="checkNow" class="secondary">立即检查</button>
+      </div>
+      <p class="rule-text">每 30 秒检查 · 失败最多尝试 3 次</p>
+    </section>
+
+    <section id="errorBox" class="message-box" hidden>
+      <strong id="errorTitle">需要注意</strong>
+      <p id="errorText"></p>
+    </section>
+
+    <section class="mode-card">
+      <div>
+        <h2 id="modeTitle">当前只识别，不会选课</h2>
+        <p id="modeDescription">先核对演练结果，确认识别正确后再开启真实提交。</p>
+      </div>
+      <button id="autoToggle" class="text-button">开启真实选课</button>
+    </section>
+
+    <section class="settings-card">
+      <h2>通用设置</h2>
+      <label for="locationKeyword">地点包含关键词</label>
+      <div class="setting-row">
+        <input id="locationKeyword" type="text" maxlength="50" value="高新" autocomplete="off">
+        <button id="saveSettings" class="secondary">保存</button>
+      </div>
+      <p id="emailConfigText" class="rule-text">正在检测邮件配置…</p>
+      <p class="rule-text">每位用户使用自己的学校登录状态和邮箱配置。</p>
+    </section>
+
+    <section class="summary-section">
+      <div class="section-heading">
+        <h2>符合条件的报告</h2>
+        <span id="reportCount" class="count">0</span>
+      </div>
+      <p id="lastCheck" class="muted">尚未检查</p>
+      <div id="reportList" class="report-list"></div>
+      <button id="retryFailed" class="secondary full-width" hidden>重试失败报告</button>
+      <button id="retryEmails" class="secondary full-width" hidden>重发失败邮件</button>
+    </section>
+
+    <details class="log-section">
+      <summary>运行记录</summary>
+      <div id="logList" class="log-list"></div>
+    </details>
+  </main>
+
+  <footer>
+    <button id="openPage" class="link-button">打开研究生综合服务平台</button>
+    <p>需保持电脑和浏览器运行，并保持网站登录状态。</p>
+  </footer>
+
+  <div id="actionError" class="action-error" role="alert" hidden></div>
+  <script src="popup.js"></script>
+</body>
+</html>
